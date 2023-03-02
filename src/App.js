@@ -1,24 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import {AppBar, Box, Container, IconButton, Toolbar, Typography} from "@material-ui/core";
+import MenuIcon from '@material-ui/icons/Menu'
+import {makeStyles} from '@material-ui/core/styles'
+
+const useStyles = makeStyles((theme) =>({
+  root: {
+    flexGrow: 1
+  },
+  menuButton: {
+    marginRight: theme.spacing(1)
+  },
+  title: {
+    flexGrow: 1
+  }
+}));
 
 function App() {
+
+ const classes = useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppBar position="fixed">
+      <Container fixed>
+        <Toolbar>
+          <IconButton edge="start"
+            color="inherit" aria-label="menu" classname={classes.menuButton}>
+            <MenuIcon />
+          </IconButton>
+          <Typography classname={classes.title}>Welcome</Typography>
+          <Box>
+            <button color="inherit" variant="outlined">Log In</button>
+          </Box>
+          <button color="inherit" variant="outlined">Sign Up</button>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 }
 
