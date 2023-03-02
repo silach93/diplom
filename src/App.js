@@ -1,7 +1,8 @@
 import './App.css';
-import {AppBar, Box, Container, IconButton, Toolbar, Typography} from "@material-ui/core";
+import {AppBar, IconButton, Toolbar, Typography} from "@mui/material"
+import {Box, Container} from "@mui/system";
 import MenuIcon from '@material-ui/icons/Menu'
-import {makeStyles} from '@material-ui/core/styles'
+import { ThemeProvider, useTheme, makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) =>({
   root: {
@@ -16,26 +17,29 @@ const useStyles = makeStyles((theme) =>({
 }));
 
 function App() {
+    const theme = useTheme();
 
- const classes = useStyles();
+    const classes = useStyles();
 
-  return (
-    <AppBar position="fixed">
-      <Container fixed>
-        <Toolbar>
-          <IconButton edge="start"
-            color="inherit" aria-label="menu" classname={classes.menuButton}>
-            <MenuIcon />
-          </IconButton>
-          <Typography classname={classes.title}>Welcome</Typography>
-          <Box>
-            <button color="inherit" variant="outlined">Log In</button>
-          </Box>
-          <button color="inherit" variant="outlined">Sign Up</button>
-        </Toolbar>
-      </Container>
-    </AppBar>
-  );
+    return (
+          <ThemeProvider theme={theme}>
+             <AppBar position="fixed">
+                <Container position="fixed">
+                     <Toolbar>
+                        <IconButton edge="start"
+                        color="inherit" aria-label="menu" classname={classes.menuButton}>
+                            <MenuIcon />
+                        </IconButton>
+                         <Typography classname={classes.title}>Welcome</Typography>
+                         <Box>
+                             <button color="inherit" variant="outlined">Log In</button>
+                         </Box>
+                         <button color="inherit" variant="outlined">Sign Up</button>
+                     </Toolbar>
+              </Container>
+             </AppBar>
+          </ThemeProvider>
+     );
 }
 
 export default App;
